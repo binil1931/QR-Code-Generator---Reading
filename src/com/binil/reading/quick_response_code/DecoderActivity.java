@@ -32,6 +32,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.binil.qrcodegenreatinganddecoding.MainActivity;
 import com.binil.qrcodegenreatinganddecoding.R;
@@ -104,6 +105,8 @@ public class DecoderActivity extends Activity implements IDecoderActivity, Surfa
             surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         }
     }
+    
+
 
     @Override
     protected void onPause() {
@@ -112,6 +115,7 @@ public class DecoderActivity extends Activity implements IDecoderActivity, Surfa
 
         if (handler != null) {
             handler.quitSynchronously();
+        	
             handler = null;
         }
 
@@ -121,15 +125,20 @@ public class DecoderActivity extends Activity implements IDecoderActivity, Surfa
             SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
             SurfaceHolder surfaceHolder = surfaceView.getHolder();
             surfaceHolder.removeCallback(this);
-            
         }
-        
-      
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_FOCUS || keyCode == KeyEvent.KEYCODE_CAMERA) {
+    	if(keyCode==KeyEvent.KEYCODE_BACK)
+    	{
+            Toast.makeText(getApplicationContext(), "back press",      
+         Toast.LENGTH_LONG).show();
+
+        return false;
+    	}
+    	
+    	if (keyCode == KeyEvent.KEYCODE_FOCUS || keyCode == KeyEvent.KEYCODE_CAMERA) {
             // Handle these events so they don't launch the Camera app
             return true;
         }

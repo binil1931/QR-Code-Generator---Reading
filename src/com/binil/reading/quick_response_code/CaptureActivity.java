@@ -59,6 +59,13 @@ public class CaptureActivity extends DecoderActivity {
 
         inScanMode = false;
     }
+    
+    public void verify(View v)
+    {
+    	Intent i = new Intent(CaptureActivity.this, MainActivity.class);
+    	finish();
+    	startActivity(i);
+    }
 
 //    @Override
 //    protected void onDestroy() {
@@ -81,7 +88,12 @@ public class CaptureActivity extends DecoderActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (inScanMode)
+            {
+            	Intent i = new Intent(CaptureActivity.this,MainActivity.class);
                 finish();
+                startActivity(i);
+            }
+            
             else
                 onResume();
             return true;
@@ -166,8 +178,8 @@ public class CaptureActivity extends DecoderActivity {
     @Override
     public void onBackPressed() {
     	// TODO Auto-generated method stub
-    	Intent i = new Intent(CaptureActivity.this, MainActivity.class);
-    	finish();
-    	startActivity(i);
+//    	Intent i = new Intent(CaptureActivity.this, MainActivity.class);
+//    	finish();
+//    	startActivity(i);
     }
 }

@@ -20,6 +20,7 @@ public class MainActivity extends Activity{
 	public void reading(View v)
 	{
 		Intent i = new Intent(MainActivity.this,CaptureActivity.class);
+		finish();
 		startActivity(i);
 	}
 	

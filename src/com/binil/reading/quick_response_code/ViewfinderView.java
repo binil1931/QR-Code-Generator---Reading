@@ -16,6 +16,9 @@
 
 package com.binil.reading.quick_response_code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -23,10 +26,9 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.binil.qrcodegenreatinganddecoding.R;
 import com.binil.reading.quick_response_code.camera.CameraManager;
@@ -75,6 +77,20 @@ public final class ViewfinderView extends View {
         scannerAlpha = 0;
         possibleResultPoints = new ArrayList<ResultPoint>(5);
         lastPossibleResultPoints = null;
+    }
+    
+    @Override
+    public boolean dispatchKeyEventPreIme(KeyEvent event) {
+        String TAG = "tag";
+    	
+    	Log.e(TAG, "dispatchKeyEventPreIme(" + event + ")");
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) 
+        {
+        	Log.e(TAG, "back botton press");
+        	
+        }
+
+        return super.dispatchKeyEventPreIme(event);
     }
 
     public void setCameraManager(CameraManager cameraManager) {

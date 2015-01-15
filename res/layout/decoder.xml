@@ -36,7 +36,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:background="@color/transparent"
             android:text="@string/msg_default_status"
-            android:textColor="#000000"
+            android:textColor="@color/status_text"
             android:textSize="14sp"/>
 
 </FrameLayout>
